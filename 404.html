@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — الصفحة غير موجودة | سكاي ويف تورز</title>
+    <meta name="description" content="عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يرجى العودة للصفحة الرئيسية أو استكشاف باقاتنا الفاخرة.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Reem+Kufi:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 950: '#070A14', 900: '#0B1020', 800: '#0F172E', 700: '#151F3D' },
+                        red: { 600: '#D91E2A', 700: '#B51520' },
+                        gold: { 600: '#AF8F4E', 500: '#C9A96A', 400: '#D8BD85', 300: '#E8D7B0' },
+                        ivory: { 50: '#FAF7F2' },
+                        sand: { 100: '#F1EBDF' }
+                    },
+                    fontFamily: {
+                        sans: ['Almarai', 'sans-serif'],
+                        display: ['Reem Kufi', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-navy-900 text-gray-100 antialiased font-sans flex flex-col min-h-screen justify-between">
+    
+    <!-- Header -->
+    <header class="site-header fixed top-0 left-0 right-0 z-50 flex items-center">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex items-center justify-between">
+                
+                <!-- Brand Logo -->
+                <a href="index.html" class="flex items-center gap-3 group" aria-label="سكاي ويف تورز - الصفحة الرئيسية">
+                    <div class="p-1 rounded-xl bg-navy-800/90 border border-gold-500/30 group-hover:border-gold-500/70 transition-all shadow-md">
+                        <img src="assets/logo s w t.jpg.jpeg" alt="Sky Wave Tours" class="h-10 md:h-11 w-auto object-contain rounded-lg">
+                    </div>
+                    <div class="hidden sm:flex flex-col">
+                        <span class="text-lg md:text-xl font-bold tracking-tight text-white">سكاي ويف <span class="font-reem text-red-gradient text-xl">تورز</span></span>
+                        <span class="text-[9px] text-gold-400 tracking-widest uppercase font-serif">Luxury Travel Concierge</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm" aria-label="التنقل الرئيسي">
+                    <a href="index.html" class="nav-link">الرئيسية</a>
+                    <a href="about.html" class="nav-link">من نحن</a>
+                    <a href="services.html" class="nav-link">خدماتنا</a>
+                    <a href="packages.html" class="nav-link">الباقات والعروض</a>
+                    <a href="destinations.html" class="nav-link">الوجهات</a>
+                    <a href="contact.html" class="nav-link">اتصل بنا</a>
+                </nav>
+
+                <!-- Actions / CTA -->
+                <div class="flex items-center gap-3 md:gap-4">
+                    <a href="index.html" class="btn-luxury-red hidden sm:inline-flex items-center gap-2 text-xs md:text-sm">
+                        <span>الصفحة الرئيسية</span>
+                        <i class="fa-solid fa-house text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content 404 -->
+    <main class="flex-1 flex items-center justify-center pt-32 pb-20 px-4">
+        <div class="container mx-auto max-w-2xl text-center">
+            
+            <div class="inline-block p-4 rounded-3xl bg-navy-800/80 border border-gold-500/30 mb-6 shadow-2xl">
+                <div class="text-6xl sm:text-8xl font-serif font-extrabold text-gold-gradient">404</div>
+            </div>
+
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">
+                يبدو أنك سلكت <span class="text-gold-gradient">مساراً غير مأهول</span> في رحلتك
+            </h1>
+            
+            <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-8 max-w-lg mx-auto">
+                الصفحة التي تحاول الوصول إليها قد تم نقلها أو لم تعد متوفرة. مستشارونا يرشدونك للعودة إلى المسار الصحيح:
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 text-xs">
+                <a href="index.html" class="p-3 rounded-xl bg-navy-800 border border-gold-500/30 hover:border-gold-400 text-white font-bold flex flex-col items-center gap-2 transition">
+                    <i class="fa-solid fa-house text-gold-400 text-base"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="packages.html" class="p-3 rounded-xl bg-navy-800 border border-gold-500/30 hover:border-gold-400 text-white font-bold flex flex-col items-center gap-2 transition">
+                    <i class="fa-solid fa-gift text-gold-400 text-base"></i>
+                    <span>الباقات والعروض</span>
+                </a>
+                <a href="service-umrah.html" class="p-3 rounded-xl bg-navy-800 border border-gold-500/30 hover:border-gold-400 text-white font-bold flex flex-col items-center gap-2 transition">
+                    <i class="fa-solid fa-kaaba text-gold-400 text-base"></i>
+                    <span>العمرة والحج</span>
+                </a>
+                <a href="contact.html" class="p-3 rounded-xl bg-navy-800 border border-gold-500/30 hover:border-gold-400 text-white font-bold flex flex-col items-center gap-2 transition">
+                    <i class="fa-solid fa-headset text-gold-400 text-base"></i>
+                    <span>اتصل بنا</span>
+                </a>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="index.html" class="btn-luxury-red px-8 py-3 text-xs sm:text-sm font-bold">
+                    <span>العودة للصفحة الرئيسية</span>
+                </a>
+                <a href="https://wa.me/201234567890" target="_blank" class="btn-luxury-gold px-8 py-3 text-xs sm:text-sm font-bold flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>تحدث مع المستشار عبر واتساب</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer bg-navy-950 text-gray-300 pt-8 pb-8 border-t border-gold-500/20">
+        <div class="container mx-auto px-4 md:px-8 text-center text-xs text-gray-400 space-y-3">
+            <p>© <span class="current-year">2026</span> سكاي ويف تورز (Sky Wave Tours). جميع الحقوق محفوظة. · ترخيص وزارة السياحة رقم <bdi dir="ltr" class="font-bold text-gold-400">2532</bdi></p>
+            <div class="flex flex-wrap items-center justify-center gap-4 text-xs">
+                <a href="privacy-policy.html" class="hover:text-gold-400">سياسة الخصوصية</a>
+                <span>•</span>
+                <a href="terms-conditions.html" class="hover:text-gold-400">الشروط والأحكام</a>
+                <span>•</span>
+                <a href="refund-policy.html" class="hover:text-gold-400">سياسة الإلغاء والاسترداد</a>
+                <span>•</span>
+                <a href="cookies-policy.html" class="hover:text-gold-400">سياسة ملفات الارتباط</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
