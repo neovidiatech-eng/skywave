@@ -118,29 +118,94 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 3. Mobile Navigation Overlay
+  // 3. Universal Mobile Navigation Drawer & Mobile Dropdown Accordion
   // ------------------------------------------------------------------------
-  const mobileToggle = document.getElementById('mobile-menu-toggle');
-  const mobileOverlay = document.getElementById('mobile-menu-overlay');
-  const mobileClose = document.getElementById('mobile-menu-close');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const mobileToggles = document.querySelectorAll('#mobile-menu-btn, #mobile-menu-toggle, .mobile-menu-toggle');
+  const mobileDrawers = document.querySelectorAll('#mobile-drawer, #mobile-menu-overlay, .mobile-drawer');
+  const mobileCloses = document.querySelectorAll('#close-drawer-btn, #mobile-menu-close, .close-drawer-btn');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-toggle), .mobile-dropdown-sublink');
 
-  function toggleMobileMenu(open) {
-    if (!mobileOverlay) return;
-    if (open) {
-      mobileOverlay.classList.remove('hidden');
-      setTimeout(() => { mobileOverlay.classList.add('opacity-100'); }, 10);
-      document.body.classList.add('menu-open');
-    } else {
-      mobileOverlay.classList.remove('opacity-100');
-      setTimeout(() => { mobileOverlay.classList.add('hidden'); }, 300);
-      document.body.classList.remove('menu-open');
-    }
+  function setMobileDrawer(isOpen) {
+    mobileDrawers.forEach(drawer => {
+      if (isOpen) {
+        drawer.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          drawer.classList.add('active', 'open', 'opacity-100');
+          drawer.setAttribute('aria-hidden', 'false');
+        });
+        document.body.classList.add('menu-open');
+      } else {
+        drawer.classList.remove('active', 'open', 'opacity-100');
+        drawer.setAttribute('aria-hidden', 'true');
+        setTimeout(() => {
+          if (!drawer.classList.contains('active') && !drawer.classList.contains('open')) {
+            drawer.classList.add('hidden');
+          }
+        }, 350);
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    mobileToggles.forEach(toggle => {
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
   }
 
-  if (mobileToggle) mobileToggle.addEventListener('click', () => toggleMobileMenu(true));
-  if (mobileClose) mobileClose.addEventListener('click', () => toggleMobileMenu(false));
-  mobileLinks.forEach(link => link.addEventListener('click', () => toggleMobileMenu(false)));
+  mobileToggles.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setMobileDrawer(true);
+    });
+  });
+
+  mobileCloses.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setMobileDrawer(false);
+    });
+  });
+
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      setMobileDrawer(false);
+    });
+  });
+
+  // Close on outside backdrop click
+  mobileDrawers.forEach(drawer => {
+    drawer.addEventListener('click', (e) => {
+      if (e.target === drawer) {
+        setMobileDrawer(false);
+      }
+    });
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+      setMobileDrawer(false);
+    }
+  });
+
+  // Mobile Services Accordion Dropdown Toggle
+  document.querySelectorAll('.mobile-dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const wrapper = btn.closest('.mobile-dropdown-wrapper');
+      if (wrapper) {
+        const isOpen = wrapper.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+    });
+  });
+
+  // Auto-open services accordion if currently on a service page
+  const currentPath = window.location.pathname;
+  if (currentPath.includes('service-') || currentPath.includes('services.html')) {
+    document.querySelectorAll('.mobile-dropdown-wrapper').forEach(w => w.classList.add('open'));
+  }
+
 
   // ------------------------------------------------------------------------
   // 4. Quick Enquiry Hero Bar -> WhatsApp
@@ -532,7 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 14. Packages Filter Tabs (for packages.html)
   // ------------------------------------------------------------------------
   const filterTabBtns = document.querySelectorAll('.filter-tab-btn');
-  const packageCards = document.querySelectorAll('.package-grid-card');
+  const packageCards = document.querySelectorAll('.package-item, .package-grid-card');
   if (filterTabBtns.length > 0 && packageCards.length > 0) {
     filterTabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -558,17 +623,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // 15. FAQ Live Search (for faq.html)
   // ------------------------------------------------------------------------
   const faqSearchInput = document.getElementById('faq-search-input');
+  const faqNoResults = document.getElementById('faq-search-no-results');
   if (faqSearchInput) {
     faqSearchInput.addEventListener('input', (e) => {
       const query = e.target.value.trim().toLowerCase();
-      document.querySelectorAll('.faq-vitem').forEach(item => {
+      const faqElements = document.querySelectorAll('.faq-vitem, .faq-item, details.faq-item');
+      let visibleCount = 0;
+
+      faqElements.forEach(item => {
         const text = item.textContent.toLowerCase();
-        if (text.includes(query)) {
-          item.style.display = 'block';
+        if (!query || text.includes(query)) {
+          item.style.display = '';
+          visibleCount++;
         } else {
           item.style.display = 'none';
         }
       });
+
+      if (faqNoResults) {
+        if (visibleCount === 0 && query.length > 0) {
+          faqNoResults.classList.remove('hidden');
+        } else {
+          faqNoResults.classList.add('hidden');
+        }
+      }
     });
   }
 

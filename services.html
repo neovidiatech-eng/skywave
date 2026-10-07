@@ -156,43 +156,91 @@
         </div>
     </header>
 
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobile-drawer" class="mobile-drawer fixed inset-0 z-50 bg-navy-950/95 backdrop-blur-xl flex flex-col justify-between p-6 overflow-y-auto lg:hidden" aria-hidden="true">
+    <!-- Mobile Fullscreen Overlay Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer fixed inset-0 z-50 bg-navy-950/98 backdrop-blur-2xl flex flex-col justify-between p-6 overflow-y-auto lg:hidden" aria-hidden="true">
         <div>
-            <div class="flex items-center justify-between pb-6 border-b border-gold-500/20">
-                <div class="flex items-center gap-3">
+            <div class="flex items-center justify-between pb-5 border-b border-gold-500/20">
+                <a href="index.html" class="flex items-center gap-3">
                     <img src="assets/logo s w t.jpg.jpeg" alt="Sky Wave Tours" class="h-9 w-auto rounded-lg">
-                    <span class="text-base font-bold text-white">سكاي ويف <span class="text-red-gradient">تورز</span></span>
-                </div>
-                <button id="close-drawer-btn" class="w-9 h-9 rounded-full bg-navy-800 border border-gold-500/30 text-gray-300 flex items-center justify-center hover:text-white" aria-label="إغلاق القائمة">
-                    <i class="fa-solid fa-xmark"></i>
+                    <span class="text-base font-bold text-white">سكاي ويف <span class="font-reem text-red-gradient text-lg">تورز</span></span>
+                </a>
+                <button id="close-drawer-btn" class="w-10 h-10 rounded-full bg-navy-800 border border-gold-500/30 text-gold-400 flex items-center justify-center hover:bg-navy-700 hover:text-white transition" aria-label="إغلاق القائمة">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
             
-            <nav class="flex flex-col gap-4 mt-8 text-base font-medium">
-                <a href="index.html" class="text-gray-300 hover:text-gold-300 py-1 border-b border-white/5">الرئيسية</a>
-                <a href="about.html" class="text-gray-300 hover:text-gold-300 py-1 border-b border-white/5">من نحن</a>
-                <a href="services.html" class="text-gold-400 font-bold py-1 border-b border-white/5">خدماتنا الشاملة</a>
-                <div class="pr-4 flex flex-col gap-2.5 text-xs text-gray-400 border-b border-white/5 pb-3">
-                    <a href="service-umrah.html" class="hover:text-gold-300">• برامج العمرة والحج VIP</a>
-                    <a href="service-flights.html" class="hover:text-gold-300">• حجز تذاكر الطيران الخاص</a>
-                    <a href="service-transport.html" class="hover:text-gold-300">• النقل السياحي والأسطول</a>
-                    <a href="service-events.html" class="hover:text-gold-300">• المعارض والمؤتمرات الدولية</a>
+            <nav class="flex flex-col gap-2 mt-6 text-base font-medium">
+                <a href="index.html" class="mobile-nav-link">
+                    <span>الرئيسية</span>
+                    <i class="fa-solid fa-house text-xs text-gold-500/50"></i>
+                </a>
+                <a href="about.html" class="mobile-nav-link">
+                    <span>من نحن</span>
+                    <i class="fa-solid fa-building text-xs text-gold-500/50"></i>
+                </a>
+                
+                <!-- Mobile Interactive Services Accordion Dropdown -->
+                <div class="mobile-dropdown-wrapper open">
+                    <button type="button" class="mobile-dropdown-toggle" aria-expanded="true">
+                        <span class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-concierge-bell text-gold-400 text-xs"></i>
+                            <span class="text-gold-400 font-bold">خدماتنا الفاخرة</span>
+                        </span>
+                        <i class="mobile-dropdown-chevron fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="mobile-dropdown-content">
+                        <a href="services.html" class="mobile-dropdown-sublink active font-bold text-gold-300">
+                            <i class="fa-solid fa-layer-group text-[11px] text-gold-400"></i>
+                            <span>استعراض كافة الخدمات</span>
+                        </a>
+                        <a href="service-umrah.html" class="mobile-dropdown-sublink">
+                            <i class="fa-solid fa-kaaba text-[11px] text-gold-400"></i>
+                            <span>برامج العمرة والحج VIP</span>
+                        </a>
+                        <a href="service-flights.html" class="mobile-dropdown-sublink">
+                            <i class="fa-solid fa-plane text-[11px] text-gold-400"></i>
+                            <span>حجز تذاكر الطيران الخاص</span>
+                        </a>
+                        <a href="service-transport.html" class="mobile-dropdown-sublink">
+                            <i class="fa-solid fa-bus text-[11px] text-gold-400"></i>
+                            <span>النقل السياحي والأسطول</span>
+                        </a>
+                        <a href="service-events.html" class="mobile-dropdown-sublink">
+                            <i class="fa-solid fa-users-rectangle text-[11px] text-gold-400"></i>
+                            <span>المعارض والمؤتمرات الدولية</span>
+                        </a>
+                    </div>
                 </div>
-                <a href="packages.html" class="text-gray-300 hover:text-gold-300 py-1 border-b border-white/5">الباقات والعروض</a>
-                <a href="destinations.html" class="text-gray-300 hover:text-gold-300 py-1 border-b border-white/5">الوجهات</a>
-                <a href="testimonials.html" class="text-gray-300 hover:text-gold-300 py-1 border-b border-white/5">آراء العملاء</a>
-                <a href="faq.html" class="text-gray-300 hover:text-gold-300 py-1 border-b border-white/5">الأسئلة الشائعة</a>
-                <a href="contact.html" class="text-gray-300 hover:text-gold-300 py-1 border-b border-white/5">اتصل بنا</a>
+
+                <a href="packages.html" class="mobile-nav-link">
+                    <span>الباقات والعروض</span>
+                    <i class="fa-solid fa-tags text-xs text-gold-500/50"></i>
+                </a>
+                <a href="destinations.html" class="mobile-nav-link">
+                    <span>الوجهات</span>
+                    <i class="fa-solid fa-map-location-dot text-xs text-gold-500/50"></i>
+                </a>
+                <a href="testimonials.html" class="mobile-nav-link">
+                    <span>آراء العملاء</span>
+                    <i class="fa-solid fa-star text-xs text-gold-500/50"></i>
+                </a>
+                <a href="faq.html" class="mobile-nav-link">
+                    <span>الأسئلة الشائعة</span>
+                    <i class="fa-solid fa-circle-question text-xs text-gold-500/50"></i>
+                </a>
+                <a href="contact.html" class="mobile-nav-link">
+                    <span>اتصل بنا</span>
+                    <i class="fa-solid fa-phone text-xs text-gold-500/50"></i>
+                </a>
             </nav>
         </div>
 
-        <div class="pt-6 border-t border-gold-500/20 flex flex-col gap-3">
-            <a href="https://wa.me/201234567890" target="_blank" class="w-full btn-luxury-gold text-center py-2.5 text-xs font-bold flex items-center justify-center gap-2">
-                <i class="fa-brands fa-whatsapp text-sm"></i>
-                <span>استشارة واتساب فورية</span>
+        <div class="pt-5 mt-6 border-t border-gold-500/20 flex flex-col gap-3">
+            <a href="https://wa.me/201234567890?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B3%D9%83%D8%A7%D9%8A%20%D9%88%D9%8A%D9%81%20%D8%AA%D9%88%D8%B1%D8%B2%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85." target="_blank" class="w-full btn-luxury-gold text-center py-3 text-xs font-bold flex items-center justify-center gap-2 shadow-lg">
+                <i class="fa-brands fa-whatsapp text-base text-emerald-400"></i>
+                <span>استشارة واتساب فورية 24/7</span>
             </a>
-            <a href="contact.html" class="w-full btn-luxury-red text-center py-2.5 text-xs font-bold">
+            <a href="contact.html" class="w-full btn-luxury-red text-center py-3 text-xs font-bold shadow-lg">
                 <span>طلب حجز مخصص</span>
             </a>
         </div>
